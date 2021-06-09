@@ -15,7 +15,7 @@ ES  (\\(['"\?\\abfnrtv]|[0-7]{1,3}|x[a-fA-F0-9]+))
 WS  [ \t\v\n\f]
 
 %{
-    #include "sintactico.tab.h"
+    #include "proyecto.tab.h"
 	
     extern void yyerror(const char *);  /* prints grammar violation message */
 
