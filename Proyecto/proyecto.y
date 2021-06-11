@@ -9,6 +9,7 @@
         printf("ERROR: %s\n",mensaje);
         exit(0);
     }
+
 %}
 
 
@@ -517,5 +518,10 @@ declaration_list
 	;
 
 %%
+
+int main(void){
+	yyparse();
+	return 0;
+}
 
 
