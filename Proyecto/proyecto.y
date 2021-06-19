@@ -19,7 +19,6 @@
 %token	SUB_ASSIGN LEFT_ASSIGN RIGHT_ASSIGN AND_ASSIGN
 %token	XOR_ASSIGN OR_ASSIGN
 %token	TYPEDEF_NAME ENUMERATION_CONSTANT
-
 %token	TYPEDEF EXTERN STATIC AUTO REGISTER INLINE
 %token	CONST RESTRICT VOLATILE
 %token	BOOL CHAR SHORT INT LONG SIGNED UNSIGNED FLOAT DOUBLE VOID
@@ -34,10 +33,10 @@
 
 %%
 
-primary_expression: IDENTIFIER | constant | string | '(' expression ')' | generic_selection;
+primary_expression: IDENTIFIER | constant | string | '(' expression ')' | generic_selection; 
 
 constant: 
-    I_CONSTANT		/* includes character_constant */
+    I_CONSTANT		/* includes character_constant */ 
 	| F_CONSTANT
 	| ENUMERATION_CONSTANT	/* after it has been defined as such */
 ;
@@ -93,15 +92,15 @@ cast_expression: unary_expression | '(' type_name ')' cast_expression ;
 
 multiplicative_expression: 
       cast_expression
-	| multiplicative_expression '*' cast_expression
-	| multiplicative_expression '/' cast_expression
-	| multiplicative_expression '%' cast_expression
+	| multiplicative_expression '*' cast_expression { printf("92 01 02 03\n");}
+	| multiplicative_expression '/' cast_expression { printf("93 01 02 03\n");}
+	| multiplicative_expression '%' cast_expression { printf("94 01 02 03\n");}
 ;
 
 additive_expression: 
       multiplicative_expression
-	| additive_expression '+' multiplicative_expression
-	| additive_expression '-' multiplicative_expression
+	| additive_expression '+' multiplicative_expression { printf("90 01 02 03\n");}
+	| additive_expression '-' multiplicative_expression { printf("91 01 02 03\n");}
 ;
 
 shift_expression: 
@@ -126,17 +125,17 @@ equality_expression
 
 and_expression
 	: equality_expression
-	| and_expression '&' equality_expression
+	| and_expression '&' equality_expression {printf("95 01 02 03\n");}
 	;
 
 exclusive_or_expression
 	: and_expression
-	| exclusive_or_expression '^' and_expression
+	| exclusive_or_expression '^' and_expression 
 	;
 
 inclusive_or_expression
 	: exclusive_or_expression
-	| inclusive_or_expression '|' exclusive_or_expression
+	| inclusive_or_expression '|' exclusive_or_expression {printf("96 01 02 03\n");}
 	;
 
 logical_and_expression
@@ -156,21 +155,21 @@ conditional_expression
 
 assignment_expression
 	: conditional_expression
-	| unary_expression assignment_operator assignment_expression
+	| unary_expression assignment_operator assignment_expression {printf("\n");}
 	;
 
 assignment_operator
-	: '='
-	| MUL_ASSIGN
-	| DIV_ASSIGN
-	| MOD_ASSIGN
-	| ADD_ASSIGN
-	| SUB_ASSIGN
-	| LEFT_ASSIGN
-	| RIGHT_ASSIGN
-	| AND_ASSIGN
-	| XOR_ASSIGN
-	| OR_ASSIGN
+	: '=' {printf("3d");}
+	| MUL_ASSIGN {printf("2a");}
+	| DIV_ASSIGN {printf("2f");}
+	| MOD_ASSIGN {printf("25");}
+	| ADD_ASSIGN {printf("2b");}
+	| SUB_ASSIGN {printf("2d");}
+	| LEFT_ASSIGN 
+	| RIGHT_ASSIGN 
+	| AND_ASSIGN {printf("26");}
+	| XOR_ASSIGN {printf("^=");}
+	| OR_ASSIGN {printf("7c");}
 	;
 
 expression
@@ -224,7 +223,7 @@ type_specifier
 	: VOID
 	| CHAR
 	| SHORT
-	| INT
+	| INT 
 	| LONG
 	| FLOAT
 	| DOUBLE

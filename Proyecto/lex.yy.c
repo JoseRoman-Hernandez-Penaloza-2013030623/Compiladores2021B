@@ -2339,6 +2339,7 @@ int main()
 #line 148 "proyecto.l"
 
 
+
 int yywrap(void)        /* called at end of input */
 {
     return 1;           /* terminate now */
